@@ -1,0 +1,33 @@
+
+@if (users.hasValue()) {
+<select id="usersSelect" (change)="onUserIdChange($event)">
+  @for (user of users.value(); track user.id) {
+    <option  [value]="user.id">User : {{ user.name }}</option>
+  }
+</select>
+} @else if (users.error()) {
+  <div>Could not load users information</div>
+} @else if (users.isLoading()) {
+  <div>Loading users info...</div>
+}
+<span>
+  <input type="checkbox" id="incompleteTodos" name="incompleteTodos" (change)="onFilterTodos($event)" />
+  <label for="incompleteTodos"> Show only Incomplete Todos</label>
+
+</span>
+
+@if (user.hasValue()) {
+  <div>
+    <h3>Todos for {{ user.value().name }}</h3>
+    @for (todo of filteredTodos(); track todo.id) {
+      <div>
+        <input type="checkbox" [checked]="todo.completed" (change)="onChangeTodoStatus(todo, $event)" />
+        {{ todo.title }}
+      </div>
+    }
+  </div>
+} @else if (user.error()) {
+  <div>Could not load todos information</div>
+} @else if (user.isLoading()) {
+  <div>Loading todos info...</div>
+}
