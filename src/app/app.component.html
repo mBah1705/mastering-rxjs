@@ -332,5 +332,11 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<div>
+  <p> Remaining Time: <span >{{ remainingTime() }}</span> seconds</p>
+  <button (click)="startTimer()">Start/Restart Timer</button>
+  <button (click)="pauseResumeTimer()">{{ pauseResumeText() }} Timer</button>
+</div>
 
+<app-todo />
 <router-outlet />
