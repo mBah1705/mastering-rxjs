@@ -1,6 +1,7 @@
 # MasteringRxjs
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+Updated to the version 22 in August 2026
 
 ## Development server
 
