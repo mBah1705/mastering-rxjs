@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { catchError, finalize, ignoreElements, map, mapTo, of, repeat, retry, share, startWith, Subject, switchMap, tap, timer } from 'rxjs';
+import { Component, computed, inject, linkedSignal, signal } from '@angular/core';
+import { catchError, finalize, ignoreElements, map, mapTo, of, repeat, retry, share, startWith, Subject, switchMap, switchMapTo, tap, timer } from 'rxjs';
 import { LoginService } from './login.service';
 import { AsyncPipe } from '@angular/common';
 
@@ -12,25 +12,40 @@ import { AsyncPipe } from '@angular/common';
 export class ErrorMessageRandomlyComponent {
   private readonly loginService = inject(LoginService)
   readonly submit$ = new Subject<void>()
-
-  readonly response$  = this.loginService.response$
-  
   readonly request$ = this.submit$.pipe(
-    switchMap(() => this.response$),
+    switchMapTo(this.loginService.pipe(startWith(""))),
     share()
   )
-  
-  readonly user$ = this.request$.pipe(
-    retry()
-  )
+
+  readonly user$ = this.request$.pipe(retry())
 
   readonly errors$ = this.request$.pipe(
     ignoreElements(),
     catchError(e => of(e)),
-    switchMap(e => timer(5000).pipe(startWith(e))),
+    repeat(),
+    switchMap(e => timer(5000).pipe(startWith(e)))
   )
-
+  
   readonly disabled$ = this.request$.pipe(
-    map(() => true),
+    mapTo(true),
+    catchError(() => of(false)),
+    repeat()
   );
+  // readonly user = computed(() => this.loginService.response())
+  // readonly error = computed(() => this.loginService.error())
+  // readonly submitDisabled = signal(false)
+
+  // ngOnInit() {
+  //     this.submit$.pipe(
+  //       tap(() => console.log('submitting!')),
+  //       share(),
+  //       retry(),
+  //       tap(() => this.loginService.loginSubject$.next(Math.random())),
+  //       ignoreElements(),
+  //       catchError(e => of(e)),
+  //       repeat(),
+  //       switchMap(e => timer(5000).pipe(startWith(e))),
+  //       tap(() => this.submitDisabled.set(true)),
+  //     ).subscribe(() => this.submitDisabled.set(false))
+  // }
 }
