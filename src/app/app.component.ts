@@ -6,7 +6,7 @@ import { CarsAndTrucksComponent } from './cars-and-trucks/cars-and-trucks.compon
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, TodoComponent, TimerComponent, CarsAndTrucksComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
