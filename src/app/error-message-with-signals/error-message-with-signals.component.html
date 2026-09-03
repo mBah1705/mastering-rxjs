@@ -1,0 +1,26 @@
+<blockquote>
+  Show error message for 5 seconds if login has failed.
+
+  <p><strong>Bonus task:</strong></p>
+  Show user name instead of button upon successful login and disable button
+  during server request.
+</blockquote>
+
+@if (error()) {
+    <div class="error" animate.enter="enter-animation" animate.leave="leave-animation">
+      {{error()}}
+    </div>
+}
+
+@if (user()) {
+    <p>
+      Welcome, {{user()}}
+    </p>
+} 
+@else {
+    <p>
+    <button [disabled]="disabled()" (click)="submit$.next()">
+        Submit
+    </button>
+    </p>
+}

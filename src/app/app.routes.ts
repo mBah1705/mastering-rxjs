@@ -7,6 +7,7 @@ export const routes: Routes = [
     { path: 'timer', loadComponent: () => import('./timer/timer.component').then(m => m.TimerComponent) },
     { path : 'focussable-block', loadComponent: () => import('./focussable-block/focussable-block.component').then(m => m.FocussableBlockComponent) },
     { path: 'error', loadComponent: () => import('./error-message-randomly/error-message-randomly.component').then(m => m.ErrorMessageRandomlyComponent)},
+    { path: 'error-signals', loadComponent: () => import('./error-message-with-signals/error-message-with-signals.component').then(m => m.ErrorMessageWithSignalsComponent)},
 
     { path: '**', redirectTo: 'todo' }
 ];
