@@ -1,0 +1,7 @@
+<blockquote>
+  Create a countdown and a button to restart it
+</blockquote>
+<p>
+  <button (click)="submit$.next()">Reset</button>
+  <span> Counting down: {{ countdown$ | async }}</span>
+</p>
