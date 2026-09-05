@@ -9,6 +9,7 @@ export const routes: Routes = [
     { path: 'error', loadComponent: () => import('./error-message-randomly/error-message-randomly.component').then(m => m.ErrorMessageRandomlyComponent)},
     { path: 'error-signals', loadComponent: () => import('./error-message-with-signals/error-message-with-signals.component').then(m => m.ErrorMessageWithSignalsComponent)},
     { path: 'progress', loadComponent: () => import('./progress-bar/progress-bar.component').then(m => m.ProgressBarComponent)},
+    { path: 'countdown', loadComponent: () => import('./countdown/countdown.component').then(m => m.CountdownComponent)},
 
     { path: '**', redirectTo: 'todo' }
 ];

@@ -1,8 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TodoComponent } from './todo/todo.component';
-import { TimerComponent } from "./timer/timer.component";
-import { CarsAndTrucksComponent } from './cars-and-trucks/cars-and-trucks.component';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +9,4 @@ import { CarsAndTrucksComponent } from './cars-and-trucks/cars-and-trucks.compon
 })
 export class AppComponent {
   title = 'mastering-rxjs';
-
 }
