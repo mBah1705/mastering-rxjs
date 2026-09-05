@@ -1,0 +1,49 @@
+<blockquote>
+  <p>
+    This is a really small cinema!
+  </p>
+
+  <p>
+    Let users pick seats and count them in <i>selected</i> counter.
+  </p>
+
+  <p>
+    Hide seats and show the final cost after user clicks <i>buy</i> button.
+  </p>
+</blockquote>
+
+
+@if (!isBuying()) {
+    <h3>
+      Choose your seats
+    </h3>
+    <section class="cinema">
+        @for (seat of seats; track $index) {
+            <button [attr.data-index]="seat" class="seat" (click)="toggleSeatSelection(seat)" [ngClass]="{ 'selected': selectedSeats().includes(seat) }">{{seat}}</button>
+        }
+    </section>
+    <section class="selected-seats">
+      <p>
+        Selected seats: {{selectedSeats().join(', ')}}
+      </p>
+    </section>
+    
+    @if (selectedSeats().length > 0) {
+        <section class="results">
+            <button class="actions" (click)="isBuying.set(true)">
+                Buy
+            </button>
+        </section>
+    }
+}
+
+@else {
+    <section class="results">
+        <p>
+            You've selected <strong>{{selectedSeats().length}}</strong> seat(s). Final cost is <strong>{{selectedSeats().length * 3}}€</strong> (3€ per seat)
+        </p>
+        <button class="actions" (click)="isBuying.set(false)">
+            &larr; Go back to seat selection
+        </button>
+    </section>
+}
