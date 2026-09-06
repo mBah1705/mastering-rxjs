@@ -1,0 +1,59 @@
+.cinema {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.seat {
+  appearance: none;
+  margin: 12px 8px;
+  border-radius: 2px;
+  background-color: rgb(43, 41, 168);
+  color: white;
+  border: 1px rgb(194, 194, 194) solid;
+  border-top: 0px;
+  padding: 6px 10px;
+
+  &.selected {
+    background-color: rgb(194, 194, 194);
+  }
+}
+
+.seat:hover {
+  cursor: pointer;
+  transition-duration: 0.3s;
+  transform: scale(1.1);
+}
+
+.selected-seats {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.actions {
+  appearance: none;
+  border: 1px solid rgb(224, 224, 224);
+  display: block;
+  margin-top: 30px;
+  padding: 12px 30px;
+  border-radius: 8px;
+  background: #3d6bb1;
+  color: white;
+  cursor: pointer;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+p {
+  margin: 8px 0;
+}
